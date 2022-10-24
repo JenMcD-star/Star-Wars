@@ -1,5 +1,9 @@
 body {
   background-image: url(../pictures/stars.jpeg);
+  overflow: hidden;
+  width: 80%;
+  height: 100%;
+  margin-left: 10%;
 }
 
 header {
@@ -45,20 +49,62 @@ header {
   }
 }
 
-a:link, a:visited{
+a:link,
+a:visited {
   color: #ffe81f;
   text-decoration: none;
-  
 }
 a:hover {
   color: #002395;
 }
 .wrapper {
+  justify-content: center;
+  text-align: center;
+  background-color: black;
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 30px;
+}
+
+.summary {
+  margin: 10px;
+}
+
+#openingCrawl {
   display: flex;
-}
-
-#poster {
   width: 50%;
-
+  word-break: keep-all;
+  height: 800px;
+  perspective: 400px;
+  font-family: "Pathway Gothic One", sans-serif;
+  font-size: 500%;
+  font-weight: 600;
+  letter-spacing: 6px;
+  line-height: 150%;
+  text-align: justify;
+  position: relative;
+  color: #feda4a;
+  font-weight: bolder;
+  bottom: 0px;
+  transform-origin: 50% 100%;
+  animation: crawl 30s linear;
 }
 
+@keyframes crawl {
+  0% {
+    top: 0;
+    transform: rotateX(20deg) translateZ(0);
+  }
+  100% {
+    top: -6000px;
+    transform: rotateX(25deg) translateZ(-2500px);
+  }
+}
+#crawlClick,
+#stopCrawl {
+  padding: auto;
+  margin: 10px;
+}

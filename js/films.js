@@ -1,5 +1,7 @@
 const title = document.getElementById("title").innerHTML;
-console.log(title);
+const crawl = document.getElementById("openingCrawl");
+const crawlClick = document.getElementById("crawlClick");
+const stopCrawl = document.getElementById("stopCrawl")
 let div = document.createElement("div");
 
 if (title == "A New Hope") {
@@ -26,3 +28,19 @@ if (title == "Revenge of the Sith") {
   div.innerHTML = `<img src = "../../pictures/6.jpeg" alt="Revenge of the Sith Movie Poster"><br>${response.results[i].title}</img>`;
   document.getElementById("poster").appendChild(div);
 }
+
+crawlClick.addEventListener("click", function () {
+    crawl.style.display = "block";
+    fetch("https://swapi.dev/api/films/1", { mode: "cors" })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (response) {
+      let opening_crawl = response.opening_crawl;
+      crawl.innerHTML = `${opening_crawl}`;
+    });
+});
+
+stopCrawl.addEventListener("click", function(){
+    crawl.style.display = "none"; 
+})
