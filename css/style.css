@@ -1,5 +1,5 @@
 body {
-  background-image: url(pictures/stars.jpeg);
+  background-image: url(../pictures/stars.jpeg);
 }
 
 header {
@@ -22,6 +22,7 @@ header {
 .box1 {
   background-color: black;
   color: #ffe81f;
+  font-size: larger;
   padding: 10px;
   width: 70%;
   max-width: 100%;
@@ -43,3 +44,21 @@ header {
     grid-auto-rows: 0.2fr;
   }
 }
+
+a:link, a:visited{
+  color: #ffe81f;
+  text-decoration: none;
+  
+}
+a:hover {
+  color: #002395;
+}
+.wrapper {
+  display: flex;
+}
+
+#poster {
+  width: 50%;
+
+}
+

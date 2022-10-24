@@ -9,27 +9,27 @@ fetch("https://swapi.dev/api/films/", { mode: "cors" })
       let div = document.createElement("div");
       switch (filmName) {
         case "A New Hope":
-          div.innerHTML = `<img src = "css/pictures/1.jpeg" alt="A New Hope Movie Poster"><br>${response.results[i].title}</img>`;
+          div.innerHTML = `<a href = "html/Films/A New Hope.html"><img src = "pictures/1.jpeg" alt="A New Hope Movie Poster"><br>${response.results[i].title}</img></a>`;
           document.getElementById("filmDisplay").appendChild(div);
           break;
         case "The Empire Strikes Back":
-          div.innerHTML = `<img src = "css/pictures/2.jpeg" alt="The Empire Strikes Back Movie Poster"><br>${response.results[i].title}</img>`;
+          div.innerHTML = `<img src = "pictures/2.jpeg" alt="The Empire Strikes Back Movie Poster"><br>${response.results[i].title}</img>`;
           document.getElementById("filmDisplay").appendChild(div);
           break;
         case "Return of the Jedi":
-          div.innerHTML = `<img src = "css/pictures/3.jpeg" alt="Return of the Jedi Movie Poster"><br>${response.results[i].title}</img>`;
+          div.innerHTML = `<img src = "pictures/3.jpeg" alt="Return of the Jedi Movie Poster"><br>${response.results[i].title}</img>`;
           document.getElementById("filmDisplay").appendChild(div);
           break;
         case "The Phantom Menace":
-          div.innerHTML = `<img src = "css/pictures/4.jpeg" alt="The Phantom Menace Movie Poster"><br>${response.results[i].title}</img>`;
+          div.innerHTML = `<img src = "pictures/4.jpeg" alt="The Phantom Menace Movie Poster"><br>${response.results[i].title}</img>`;
           document.getElementById("filmDisplay").appendChild(div);
           break;
         case "Attack of the Clones":
-          div.innerHTML = `<img src = "css/pictures/5.jpeg" alt="Attack of the Clones Movie Poster"><br>${response.results[i].title}</img>`;
+          div.innerHTML = `<img src = "pictures/5.jpeg" alt="Attack of the Clones Movie Poster"><br>${response.results[i].title}</img>`;
           document.getElementById("filmDisplay").appendChild(div);
           break;
         case "Revenge of the Sith":
-          div.innerHTML = `<img src = "css/pictures/6.jpeg" alt="Revenge of the Sith Movie Poster"><br>${response.results[i].title}</img>`;
+          div.innerHTML = `<img src = "pictures/6.jpeg" alt="Revenge of the Sith Movie Poster"><br>${response.results[i].title}</img>`;
           document.getElementById("filmDisplay").appendChild(div);
           break;
       }
