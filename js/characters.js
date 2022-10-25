@@ -1,3 +1,7 @@
+const lukeHomeWorld = document.getElementById("lukeHome");
+const leiaHomeWorld = document.getElementById("leiaHome");
+const obiHomeWorld = document.getElementById("obiHome");
+const darthHome = document.getElementById("darthHome")
 function getAppearance(num) {
   fetch("https://swapi.dev/api/people/", { mode: "cors" })
     .then(function (response) {
@@ -65,6 +69,7 @@ function getAppearance(num) {
               li.innerHTML = `${ships}`;
               shipList.appendChild(li);
             }
+            getPlanet(1, lukeHomeWorld);
           });
           break;
         case "Leia Organa":
@@ -106,7 +111,10 @@ function getAppearance(num) {
               leiaFilms.appendChild(li4);
               leiaFilms.appendChild(li5);
               leiaFilms.appendChild(li6);
+
+              getPlanet(2, leiaHomeWorld);
             });
+
           break;
         case "Obi-Wan Kenobi":
           let lli = document.createElement("li");
@@ -144,6 +152,7 @@ function getAppearance(num) {
               obiFilms.appendChild(li4);
               obiFilms.appendChild(li5);
               obiFilms.appendChild(li6);
+
             });
 
           Promise.all([
@@ -177,7 +186,10 @@ function getAppearance(num) {
 
               li.innerHTML = `${ships}`;
               obiShip.appendChild(li);
+
+              
             }
+            getPlanet(20, obiHomeWorld);
           });
           break;
         case "Darth Vader":
@@ -210,25 +222,24 @@ function getAppearance(num) {
               darthFilms.appendChild(li3);
               darthFilms.appendChild(li6);
             });
-            fetch("https://swapi.dev/api/starships/13/").then((resp) =>
-            resp.json())
+          fetch("https://swapi.dev/api/starships/13/")
+            .then((resp) => resp.json())
             .then(function (response) {
-              console.log(response)
-              
-                let li = document.createElement("li");
-                let name = response.name;
-  
-                let model = response.model;
-  
-                let manufacturer = response.manufacturer;
-  
-                let cost = response.cost_in_credits;
-  
-                let ships = `Name: ${name} <br> Model: ${model} <br> Manufacturer: ${manufacturer} <br> Cost: ${cost}`;
-  
-                li.innerHTML = `${ships}`;
-                darthShip.appendChild(li);
+              let li = document.createElement("li");
+              let name = response.name;
+
+              let model = response.model;
+
+              let manufacturer = response.manufacturer;
+
+              let cost = response.cost_in_credits;
+
+              let ships = `Name: ${name} <br> Model: ${model} <br> Manufacturer: ${manufacturer} <br> Cost: ${cost}`;
+
+              li.innerHTML = `${ships}`;
+              darthShip.appendChild(li);
             });
+            getPlanet(1, darthHome)
           break;
         default:
           "error";
@@ -240,4 +251,23 @@ getAppearance(3);
 getAppearance(4);
 getAppearance(9);
 
-
+function getPlanet(num, name) {
+  fetch(`https://swapi.dev/api/planets/${num}/`)
+    .then((resp) => resp.json())
+    .then(function (response) {
+      let homeworld = response.name;
+      let rotation = response.orbital_period;
+      let orbit = response.orbital_period;
+      let diameter = response.diameter;
+      let climate = response.climate;
+      let gravity = response.gravity;
+      let terrain = response.terrain;
+      let surfaceWater = response.surface_water;
+      let population = response.population;
+      let div = document.createElement("div");
+      let sentence = `Name: ${homeworld}<br>Rotation: ${rotation}<br> Orbit: ${orbit}<br>Diameter: ${diameter}<br> Climate: ${climate}<br> Gravity: ${gravity}<br>
+    Terriain: ${terrain}<br> Surface Water: ${surfaceWater}<br> Population: ${population}`;
+      div.innerHTML = sentence;
+      name.appendChild(div);
+    });
+}
