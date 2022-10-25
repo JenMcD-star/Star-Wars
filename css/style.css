@@ -10,12 +10,16 @@ header {
   flex-direction: column;
   width: 100%;
   background-color: white;
-  justify-content: space-evenly;
   align-items: center;
+  position: sticky;
   top: 0;
 }
 
-h1{
+.homelinks {
+  flex-direction: row;
+}
+
+h1 {
   display: flex;
   justify-content: center;
   color: #ffe81f;
@@ -38,6 +42,8 @@ h1{
 }
 li {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 #filmDisplay {
   max-width: 1200px;
@@ -49,7 +55,8 @@ li {
 }
 
 @media (max-width: 900px) {
-  #filmDisplay, #wrapper {
+  #filmDisplay,
+  #wrapper #characterwrapper {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-auto-rows: 0.2fr;
     position: relative;
@@ -59,10 +66,12 @@ li {
 a:link,
 a:visited {
   color: #002395;
+  background: #feda4a;
   text-decoration: none;
 }
 a:hover {
-  color: #ffe81f;
+  color: white;
+  background: black;
 }
 
 .wrapper {
@@ -77,6 +86,16 @@ a:hover {
   grid-row-gap: 30px;
   grid-template-rows: auto;
 }
+
+.characterwrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: black;
+  color: white;
+}
+
 
 .summary {
   margin: 10px;

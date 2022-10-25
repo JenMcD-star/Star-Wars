@@ -37,8 +37,27 @@ function getPeople(num) {
           .then(function (response) {
             let li = document.createElement("li");
             let peopleNames = response.name;
-            li.innerHTML = `${peopleNames}`;
-            nameList.appendChild(li);
+            switch (peopleNames) {
+              case "Luke Skywalker":
+                li.innerHTML = `<a href ="../Characters/StarWarsCharacters.html#lukeS">${peopleNames}</a>`;
+                nameList.appendChild(li);
+                break;
+              case "Leia Organa":
+                li.innerHTML = `<a href ="../Characters/StarWarsCharacters.html#leiaO">${peopleNames}</a>`;
+                nameList.appendChild(li);
+                break;
+              case "Obi-Wan Kenobi":
+                li.innerHTML = `<a href ="../Characters/StarWarsCharacters.html#obiW">${peopleNames}</a>`;
+                nameList.appendChild(li);
+                break;
+              case "Darth Vader":
+                li.innerHTML = `<a href ="../Characters/StarWarsCharacters.html#darthV">${peopleNames}</a>`;
+                nameList.appendChild(li);
+                break;
+              default:
+                li.innerHTML = `${peopleNames}`;
+                nameList.appendChild(li);
+            }
           });
       }
     });
