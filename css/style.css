@@ -15,10 +15,12 @@ header {
   top: 0;
 }
 
-.home a:link{
-  color: black;
+h1{
+  display: flex;
+  justify-content: center;
+  color: #ffe81f;
+  background-color: black;
 }
-
 .content {
   display: flex;
   flex-direction: column;
@@ -34,7 +36,9 @@ header {
   max-width: 100%;
   text-align: center;
 }
-
+li {
+  list-style: none;
+}
 #filmDisplay {
   max-width: 1200px;
   margin: 0 auto;
@@ -54,12 +58,13 @@ header {
 
 a:link,
 a:visited {
-  color: #ffe81f;
+  color: #002395;
   text-decoration: none;
 }
 a:hover {
-  color: #002395;
+  color: #ffe81f;
 }
+
 .wrapper {
   justify-content: center;
   text-align: center;
@@ -70,6 +75,7 @@ a:hover {
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 30px;
+  grid-template-rows: auto;
 }
 
 .summary {
