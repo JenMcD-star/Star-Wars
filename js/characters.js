@@ -1,8 +1,8 @@
 const lukeHomeWorld = document.getElementById("lukeHome");
 const leiaHomeWorld = document.getElementById("leiaHome");
 const obiHomeWorld = document.getElementById("obiHome");
-const darthHome = document.getElementById("darthHome")
-function getAppearance(num) {
+const darthHome = document.getElementById("darthHome");
+function getInfo(num) {
   fetch("https://swapi.dev/api/people/", { mode: "cors" })
     .then(function (response) {
       return response.json();
@@ -28,23 +28,10 @@ function getAppearance(num) {
               return response.json();
             })
             .then(function (response) {
-              let film = response.results[0].title;
-              let film2 = response.results[1].title;
-              let film3 = response.results[2].title;
-              let film4 = response.results[5].title;
-              let li = document.createElement("li");
-              let li2 = document.createElement("li");
-              let li3 = document.createElement("li");
-              let li4 = document.createElement("li");
-
-              li.innerHTML = `<a href= "../Films/${film}.html">${film}</a>`;
-              li2.innerHTML = `<a href= "../Films/${film2}.html">${film2}</a>`;
-              li3.innerHTML = `<a href= "../Films/${film3}.html">${film3}</a>`;
-              li4.innerHTML = `<a href= "../Films/${film4}.html">${film4}</a>`;
-              lukeFilms.appendChild(li);
-              lukeFilms.appendChild(li2);
-              lukeFilms.appendChild(li3);
-              lukeFilms.appendChild(li4);
+              getFilms(0, lukeFilms, response);
+              getFilms(1, lukeFilms, response);
+              getFilms(2, lukeFilms, response);
+              getFilms(5, lukeFilms, response);
             });
           Promise.all([
             fetch("https://swapi.dev/api/starships/12/").then((resp) =>
@@ -54,21 +41,7 @@ function getAppearance(num) {
               resp.json()
             ),
           ]).then(function (response) {
-            for (i = 0; i < response.length; i++) {
-              let li = document.createElement("li");
-              let name = response[i].name;
-
-              let model = response[i].model;
-
-              let manufacturer = response[i].manufacturer;
-
-              let cost = response[i].cost_in_credits;
-
-              let ships = `Name: ${name} <br> Model: ${model} <br> Manufacturer: ${manufacturer} <br> Cost: ${cost}`;
-
-              li.innerHTML = `${ships}`;
-              shipList.appendChild(li);
-            }
+            getShips(response, shipList);
             getPlanet(1, lukeHomeWorld);
           });
           break;
@@ -81,36 +54,12 @@ function getAppearance(num) {
               return response.json();
             })
             .then(function (response) {
-              let film = response.results[0].title;
-              let film2 = response.results[1].title;
-              let film3 = response.results[2].title;
-
-              let film4 = response.results[3].title;
-
-              let film5 = response.results[4].title;
-
-              let film6 = response.results[5].title;
-
-              let li = document.createElement("li");
-              let li2 = document.createElement("li");
-              let li3 = document.createElement("li");
-              let li4 = document.createElement("li");
-              let li5 = document.createElement("li");
-              let li6 = document.createElement("li");
-
-              li.innerHTML = `<a href= "../Films/${film}.html">${film}</a>`;
-              li2.innerHTML = `<a href= "../Films/${film2}.html">${film2}</a>`;
-              li3.innerHTML = `<a href= "../Films/${film3}.html">${film3}</a>`;
-              li4.innerHTML = `<a href= "../Films/${film4}.html">${film4}</a>`;
-              li5.innerHTML = `<a href= "../Films/${film5}.html">${film5}</a>`;
-              li6.innerHTML = `<a href= "../Films/${film6}.html">${film6}</a>`;
-
-              leiaFilms.appendChild(li);
-              leiaFilms.appendChild(li2);
-              leiaFilms.appendChild(li3);
-              leiaFilms.appendChild(li4);
-              leiaFilms.appendChild(li5);
-              leiaFilms.appendChild(li6);
+              getFilms(0, leiaFilms, response);
+              getFilms(1, leiaFilms, response);
+              getFilms(2, leiaFilms, response);
+              getFilms(3, leiaFilms, response);
+              getFilms(4, leiaFilms, response);
+              getFilms(5, leiaFilms, response);
 
               getPlanet(2, leiaHomeWorld);
             });
@@ -125,34 +74,12 @@ function getAppearance(num) {
               return response.json();
             })
             .then(function (response) {
-              let film = response.results[0].title;
-              let film2 = response.results[1].title;
-              let film3 = response.results[2].title;
-              let film4 = response.results[3].title;
-              let film5 = response.results[4].title;
-              let film6 = response.results[5].title;
-
-              let li = document.createElement("li");
-              let li2 = document.createElement("li");
-              let li3 = document.createElement("li");
-              let li4 = document.createElement("li");
-              let li5 = document.createElement("li");
-              let li6 = document.createElement("li");
-
-              li.innerHTML = `<a href= "../Films/${film}.html">${film}</a>`;
-              li2.innerHTML = `<a href= "../Films/${film2}.html">${film2}</a>`;
-              li3.innerHTML = `<a href= "../Films/${film3}.html">${film3}</a>`;
-              li4.innerHTML = `<a href= "../Films/${film4}.html">${film4}</a>`;
-              li5.innerHTML = `<a href= "../Films/${film5}.html">${film5}</a>`;
-              li6.innerHTML = `<a href= "../Films/${film6}.html">${film6}</a>`;
-
-              obiFilms.appendChild(li);
-              obiFilms.appendChild(li2);
-              obiFilms.appendChild(li3);
-              obiFilms.appendChild(li4);
-              obiFilms.appendChild(li5);
-              obiFilms.appendChild(li6);
-
+              getFilms(0, obiFilms, response);
+              getFilms(1, obiFilms, response);
+              getFilms(2, obiFilms, response);
+              getFilms(3, obiFilms, response);
+              getFilms(4, obiFilms, response);
+              getFilms(5, obiFilms, response);
             });
 
           Promise.all([
@@ -172,23 +99,7 @@ function getAppearance(num) {
               resp.json()
             ),
           ]).then(function (response) {
-            for (i = 0; i < response.length; i++) {
-              let li = document.createElement("li");
-              let name = response[i].name;
-
-              let model = response[i].model;
-
-              let manufacturer = response[i].manufacturer;
-
-              let cost = response[i].cost_in_credits;
-
-              let ships = `Name: ${name} <br> Model: ${model} <br> Manufacturer: ${manufacturer} <br> Cost: ${cost}`;
-
-              li.innerHTML = `${ships}`;
-              obiShip.appendChild(li);
-
-              
-            }
+            getShips(response, obiShip);
             getPlanet(20, obiHomeWorld);
           });
           break;
@@ -202,25 +113,10 @@ function getAppearance(num) {
               return response.json();
             })
             .then(function (response) {
-              let film = response.results[0].title;
-              let film2 = response.results[1].title;
-              let film3 = response.results[2].title;
-              let film6 = response.results[5].title;
-
-              let li = document.createElement("li");
-              let li2 = document.createElement("li");
-              let li3 = document.createElement("li");
-              let li6 = document.createElement("li");
-
-              li.innerHTML = `<a href= "../Films/${film}.html">${film}</a>`;
-              li2.innerHTML = `<a href= "../Films/${film2}.html">${film2}</a>`;
-              li3.innerHTML = `<a href= "../Films/${film3}.html">${film3}</a>`;
-              li6.innerHTML = `<a href= "../Films/${film6}.html">${film6}</a>`;
-
-              darthFilms.appendChild(li);
-              darthFilms.appendChild(li2);
-              darthFilms.appendChild(li3);
-              darthFilms.appendChild(li6);
+              getFilms(0, darthFilms, response);
+              getFilms(1, darthFilms, response);
+              getFilms(2, darthFilms, response);
+              getFilms(5, darthFilms, response);
             });
           fetch("https://swapi.dev/api/starships/13/")
             .then((resp) => resp.json())
@@ -239,17 +135,13 @@ function getAppearance(num) {
               li.innerHTML = `${ships}`;
               darthShip.appendChild(li);
             });
-            getPlanet(1, darthHome)
+          getPlanet(1, darthHome);
           break;
         default:
           "error";
       }
     });
 }
-getAppearance(0);
-getAppearance(3);
-getAppearance(4);
-getAppearance(9);
 
 function getPlanet(num, name) {
   fetch(`https://swapi.dev/api/planets/${num}/`)
@@ -271,3 +163,32 @@ function getPlanet(num, name) {
       name.appendChild(div);
     });
 }
+function getShips(response, parent) {
+  for (i = 0; i < response.length; i++) {
+    let li = document.createElement("li");
+    let name = response[i].name;
+
+    let model = response[i].model;
+
+    let manufacturer = response[i].manufacturer;
+
+    let cost = response[i].cost_in_credits;
+
+    let ships = `Name: ${name} <br> Model: ${model} <br> Manufacturer: ${manufacturer} <br> Cost: ${cost}`;
+
+    li.innerHTML = `${ships}`;
+    parent.appendChild(li);
+  }
+}
+function getFilms(num, name, response) {
+  let film = response.results[num].title;
+  let li = document.createElement("li");
+  li.innerHTML = `<a href= "../Films/${film}.html">${film}</a>`;
+  name.appendChild(li);
+}
+function getAppearance() {}
+
+getInfo(0);
+getInfo(3);
+getInfo(4);
+getInfo(9);
